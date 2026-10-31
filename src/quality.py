@@ -1,5 +1,6 @@
 import pandas as pd
 
+#devolve uma lista de problemas encontrados no dataframe
 def checar(df: pd.DataFrame) -> list[str]:
     problemas = []
     if df["data"].isna().any():
@@ -8,6 +9,6 @@ def checar(df: pd.DataFrame) -> list[str]:
         problemas.append("há valores nulos ou inválidos")
     if df.duplicated(subset=["serie","data"]).any():
         problemas.append("há datas repetidas na mesma série")
-    if (df["data"] > pd.Timestamp.today()).any()
-        problemas>append("há datas no futuro")
+    if (df["data"] > pd.Timestamp.today()).any():
+        problemas.append("há datas no futuro")
     return problemas
